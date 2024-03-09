@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from rest_framework import serializers
 from main.models import Habit
 from main.validators import TimeToCompleteValidator, PeriodicityValidator, RelatedOrRemunerationValidator, \
@@ -19,3 +20,16 @@ class HabitSerializer(serializers.ModelSerializer):
             PeriodicityValidator(field='periodicity'),
             RelatedOrRemunerationValidator(field='__all__')
         ]
+
+    def create(self, validated_data):
+        """
+        Создает привычку
+        :param validated_data:
+        :return:
+        """
+        user = self.context['request'].user  # получаем авторизированного пользователя
+        habit = Habit(**validated_data)
+        habit.user = user  # устанавливаем пользователя
+        habit.save()  # сохраняем объект
+        habit.create_periodic_tasks()  # создаем периодическую задачу
+        return habit

@@ -9,9 +9,12 @@ click-plugins==1.1.1
 click-repl==0.3.0
 colorama==0.4.6
 coverage==7.4.3
+cron-descriptor==1.4.3
 Django==4.2.7
+django-celery-beat==2.6.0
 django-cors-headers==4.3.1
 django-filter==23.5
+django-timezone-field==6.1.0
 djangorestframework==3.14.0
 djangorestframework-simplejwt==5.3.1
 dnspython==2.6.1
@@ -25,6 +28,7 @@ pillow==10.2.0
 prompt-toolkit==3.0.43
 psycopg2-binary==2.9.9
 PyJWT==2.8.0
+python-crontab==3.0.0
 python-dateutil==2.9.0.post0
 pytz==2024.1
 PyYAML==6.0.1
@@ -35,3 +39,5 @@ tzdata==2024.1
 uritemplate==4.1.1
 vine==5.1.0
 wcwidth==0.2.13
+
+requests~=2.31.0

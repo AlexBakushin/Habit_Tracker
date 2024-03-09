@@ -1,9 +1,15 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from main.models import Habit
 from main.serliazers import HabitSerializer
 from main.permissions import IsOwnerOrModerator, IsOwner, IsModer
 from main.paginator import MainPaginator
+from main.tasks import send_message
+from users.models import User
 
 
 class HabitCreateAPIView(generics.CreateAPIView):
@@ -77,3 +83,13 @@ class HabitDestroyAPIView(generics.DestroyAPIView):
     """
     queryset = Habit.objects.all()
     permission_classes = [IsAuthenticated, ~IsModer & IsOwner]
+
+
+class MessageSendAPIView(APIView):
+    """
+    Отправка сообщения в чат
+    """
+    def post(self, request):
+        user = get_object_or_404(User, pk=request.data.get('user'))
+        send_message.delay(user.email)
+        return Response({'success': 'Сообщение отправлено'}, status=200)

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'django_filters',
     'corsheaders',
+    'django_celery_beat',
 
     'users',
     'main',
@@ -165,3 +166,11 @@ CORS_ALLOWED_ORIGINS = [
 CSRF_TRUSTED_ORIGINS = [
     'http://read-write.example.com',
 ]
+
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
+CELERY_TIMEZONE = "Asia/Yekaterinburg"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+TELEGRAM_BOT_TOKEN = "6886757391:AAEMY5Lt2_JlIEhNkAFs8b2P1ujWPDg5oh8"

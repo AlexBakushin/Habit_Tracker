@@ -1,3 +1,5 @@
+import datetime
+
 from django.contrib.auth.models import Group
 from rest_framework import status
 from rest_framework.test import APITestCase, APIClient
@@ -18,7 +20,7 @@ class MainTests(APITestCase):
         data = {
             'user': 1,
             'place': 'Место',
-            'time': '10:00:00',
+            'time': datetime.datetime.now(),
             'action': 'www',
             'is_pleasant_habit': False,
             'periodicity': 1,
@@ -48,7 +50,7 @@ class MainTests(APITestCase):
         data = {
             'user': self.user.id,
             'place': 'Место',
-            'time': '10:00:00',
+            'time': datetime.datetime.now(),
             'action': 'www',
             'is_pleasant_habit': False,
             'periodicity': 1,
@@ -80,7 +82,7 @@ class MainTests(APITestCase):
         data = {
             'user': 1,
             'place': 'Место',
-            'time': '10:00:00',
+            'time': datetime.datetime.now(),
             'action': 'Действие',
             'is_pleasant_habit': False,
             'periodicity': 1,
@@ -122,7 +124,7 @@ class MainTests(APITestCase):
         Habit.objects.create(
             user=test_user,
             place='Место',
-            time='10:00:00',
+            time=datetime.datetime.now(),
             action='www',
             is_pleasant_habit=False,
             periodicity=1,
@@ -157,7 +159,7 @@ class MainTests(APITestCase):
         Habit.objects.create(
             user=test_user,
             place='Место',
-            time='10:00:00',
+            time=datetime.datetime.now(),
             action='Действие',
             is_pleasant_habit=False,
             periodicity=1,
@@ -168,7 +170,7 @@ class MainTests(APITestCase):
         Habit.objects.create(
             user=self.user,
             place='Место',
-            time='10:00:00',
+            time=datetime.datetime.now(),
             action='www',
             is_pleasant_habit=False,
             periodicity=1,
@@ -204,7 +206,7 @@ class MainTests(APITestCase):
         Habit.objects.create(
             user=test_user,
             place='Место',
-            time='10:00:00',
+            time=datetime.datetime.now(),
             action='www',
             is_pleasant_habit=False,
             periodicity=1,
@@ -233,7 +235,7 @@ class MainTests(APITestCase):
         Habit.objects.create(
             user=self.user,
             place='Место',
-            time='10:00:00',
+            time=datetime.datetime.now(),
             action='Действие',
             is_pleasant_habit=False,
             periodicity=1,
@@ -262,7 +264,7 @@ class MainTests(APITestCase):
         Habit.objects.create(
             user=self.user,
             place='Место',
-            time='10:00:00',
+            time=datetime.datetime.now(),
             action='Действие',
             is_pleasant_habit=False,
             periodicity=1,
@@ -293,7 +295,7 @@ class MainTests(APITestCase):
         Habit.objects.create(
             user=self.user,
             place='Место',
-            time='10:00:00',
+            time=datetime.datetime.now(),
             action='Действие',
             is_pleasant_habit=False,
             periodicity=1,
@@ -323,7 +325,7 @@ class MainTests(APITestCase):
         Habit.objects.create(
             user=self.user,
             place='Место',
-            time='10:00:00',
+            time=datetime.datetime.now(),
             action='Действие',
             is_pleasant_habit=False,
             periodicity=1,
@@ -358,7 +360,7 @@ class MainTests(APITestCase):
         Habit.objects.create(
             user=test_user,
             place='Место',
-            time='10:00:00',
+            time=datetime.datetime.now(),
             action='Действие',
             is_pleasant_habit=False,
             periodicity=1,
@@ -395,7 +397,7 @@ class MainTests(APITestCase):
         Habit.objects.create(
             user=test_user,
             place='Место',
-            time='10:00:00',
+            time=datetime.datetime.now(),
             action='Действие',
             is_pleasant_habit=False,
             periodicity=1,

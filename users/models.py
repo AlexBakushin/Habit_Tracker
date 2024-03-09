@@ -11,7 +11,7 @@ class User(AbstractUser):
     username = None
     email = models.EmailField(unique=True, verbose_name='Почта')
     avatar = models.ImageField(upload_to='users/', verbose_name='Аватар', **NULLABLE)
-    telephone = models.CharField(max_length=15, verbose_name='Телефон')
+    tg_user_name = models.CharField(max_length=255, verbose_name='Ник Телеграм', unique=True)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
