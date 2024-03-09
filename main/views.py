@@ -89,6 +89,7 @@ class MessageSendAPIView(APIView):
     """
     Отправка сообщения в чат
     """
+
     def post(self, request):
         user = get_object_or_404(User, pk=request.data.get('user'))
         send_message.delay(user.email)

@@ -1,14 +1,18 @@
 import requests
 from celery import shared_task
 from main.models import Habit
+from django.conf import settings
 
 
 @shared_task
 def send_message(tg_user_name, habit_id):
-    bot_token = "6886757391:AAEMY5Lt2_JlIEhNkAFs8b2P1ujWPDg5oh8"
+    """
+    Задача для отправки уведомления о выполнении привычки в телеграм
+    """
+    bot_token = settings.TELEGRAM_BOT_TOKEN
     chats_info = requests.get(
-            url=f'https://api.telegram.org/bot{bot_token}/getUpdates',
-        )
+        url=f'https://api.telegram.org/bot{bot_token}/getUpdates',
+    )
     for item in chats_info['result']:
         username = item['message']['chat']['username']
         if username == tg_user_name[1:]:
@@ -24,7 +28,6 @@ def send_message(tg_user_name, habit_id):
                 }
             )
             print(response.json())
-
 
 # celery -A main worker -l info -P eventlet
 # celery -A main beat -l info -S django

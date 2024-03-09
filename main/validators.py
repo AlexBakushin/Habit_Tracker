@@ -6,6 +6,7 @@ class OrRelatedOrRemunerationValidator:
     """
     Исключает одновременный выбор связанной привычки и указания вознаграждения.
     """
+
     def __init__(self, field):
         self.field = field
 
@@ -18,6 +19,7 @@ class TimeToCompleteValidator:
     """
     Время на выполнение должно быть меньше 120 секунд.
     """
+
     def __init__(self, field):
         self.field = field
 
@@ -30,6 +32,7 @@ class RelatedIsPleasantValidator:
     """
     В связанные привычки могут попадать только привычки с признаком приятной привычки.
     """
+
     def __init__(self, field):
         self.field = field
 
@@ -42,6 +45,7 @@ class RelatedOrRemunerationValidator:
     """
     У приятной привычки не может быть вознаграждения или связанной привычки.
     """
+
     def __init__(self, field):
         self.field = field
 
@@ -54,6 +58,7 @@ class PeriodicityValidator:
     """
     Периодичность должна быть не больше 7.
     """
+
     def __init__(self, field):
         self.field = field
 
