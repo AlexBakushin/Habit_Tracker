@@ -83,14 +83,3 @@ class HabitDestroyAPIView(generics.DestroyAPIView):
     """
     queryset = Habit.objects.all()
     permission_classes = [IsAuthenticated, ~IsModer & IsOwner]
-
-
-class MessageSendAPIView(APIView):
-    """
-    Отправка сообщения в чат
-    """
-
-    def post(self, request):
-        user = get_object_or_404(User, pk=request.data.get('user'))
-        send_message.delay(user.email)
-        return Response({'success': 'Сообщение отправлено'}, status=200)
