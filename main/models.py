@@ -1,6 +1,4 @@
 import json
-from datetime import datetime
-
 from django.db import models
 from django.conf import settings
 from django_celery_beat.models import IntervalSchedule, PeriodicTask
