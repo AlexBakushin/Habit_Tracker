@@ -11,7 +11,7 @@ class Habit(models.Model):
     Модель привычки
     """
     habit_id = models.AutoField(primary_key=True, verbose_name='ID привычки')
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Пользователь')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Пользователь', **NULLABLE)
     place = models.CharField(max_length=150, verbose_name='Место')
     time = models.DateTimeField(verbose_name='Время, когда необходимо выполнить')
     action = models.CharField(max_length=150, verbose_name='Действие')

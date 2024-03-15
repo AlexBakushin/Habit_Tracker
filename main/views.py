@@ -39,15 +39,27 @@ class HabitListAPIView(generics.ListAPIView):
 
     def get_queryset(self):
         """
-        Передает queryset привычек, где user - пользователь и все публичные, кроме админа и модератора
+        Передает queryset привычек, где user - пользователь, кроме админа и модератора
         """
         if self.request.user.is_staff:
             return Habit.objects.all()
+        return Habit.objects.filter(user=self.request.user)
 
-        published_habits = Habit.objects.filter(is_published=True)
-        user_habits = Habit.objects.filter(user=self.request.user)
-        combined_habits = published_habits.union(user_habits)
-        return combined_habits
+
+class HabitPublicListAPIView(generics.ListAPIView):
+    """
+    Список привычек
+    """
+    serializer_class = HabitSerializer
+    queryset = Habit.objects.all()
+    permission_classes = [IsAuthenticated]
+    pagination_class = MainPaginator
+
+    def get_queryset(self):
+        """
+        Передает queryset привычек, где все публичные, кроме админа и модератора
+        """
+        return Habit.objects.filter(is_published=True)
 
 
 class HabitRetrieveAPIView(generics.RetrieveAPIView):

@@ -4,7 +4,7 @@ from users.serliazers import UserSerializer
 from .models import User
 from rest_framework.response import Response
 from rest_framework import status
-from main.permissions import IsOwnerOrModerator, IsModer, IsOwner
+from users.permissions import IsOwnerOrModerator, IsModer, IsOwner
 
 
 class UserViewSet(viewsets.ModelViewSet):

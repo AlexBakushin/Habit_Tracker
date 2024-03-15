@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'shelterdocker',
+        'NAME': 'habit_docker',
         'USER': os.getenv("DATABASES_USER"),
         'PASSWORD': os.getenv("DATABASES_PASSWORD"),
         'HOST': 'db',
