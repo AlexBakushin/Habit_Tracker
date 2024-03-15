@@ -13,7 +13,7 @@ def send_message(tg_user_name, habit_id):
     chats_info = requests.get(
         url=f'https://api.telegram.org/bot{bot_token}/getUpdates',
     )
-    for item in chats_info['result']:
+    for item in chats_info.json()['result']:
         username = item['message']['chat']['username']
         if username == tg_user_name[1:]:
             chat_id = item['message']['chat']['id']
@@ -22,12 +22,10 @@ def send_message(tg_user_name, habit_id):
                 url=f'https://api.telegram.org/bot{bot_token}/sendMessage',
                 params={
                     'chat_id': chat_id,
-                    'text': f'''Привет!
-                                {habit.time} в {habit.place} необходимо выполнять {habit.action}
-                                в течение {habit.duration} !'''
+                    'text': f'Привет!\n'
+                            f'Пора выполнить свою привычку- {habit.action} {habit.place} в течение {habit.time_to_complete} секунд!'
                 }
             )
-            print(response.json())
 
 # celery -A main worker -l info -P eventlet
 # celery -A main beat -l info -S django
