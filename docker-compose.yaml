@@ -10,6 +10,7 @@ services:
   db:
     image: postgres
     environment:
+      - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - PGDATA=${PGDATA}
     volumes:
