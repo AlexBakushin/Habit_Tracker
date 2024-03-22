@@ -5,11 +5,10 @@ from django.conf import settings
 
 api_id = settings.API_ID
 api_hash = settings.API_HASH
-bot_token = settings.TELEGRAM_BOT_TOKEN
 
 
 async def get_user(username):
-    async with TelegramClient(bot_token, api_id, api_hash) as client:
+    async with TelegramClient('user', api_id, api_hash) as client:
         user = await client(GetFullUserRequest(username))
     return user
 
