@@ -40,6 +40,6 @@ docker-compose up
 `http://localhost:8000/admin/`
 
 Создать администратора можно командой:
-`docker exec -it habit_tracker-celery-1 python manage.py csu`
+`docker exec -it habit_tracker-app-1 python manage.py csu`
 
 При первом запуске периодической задачи, потребуется ввести токен телеграмм бота в терминал!!!
